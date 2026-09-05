@@ -149,16 +149,6 @@ PRODUCT_PACKAGES += \
     libbase_shim
 
 PRODUCT_PACKAGES += \
-    FrameworksOverlaySea \
-    TetheringConfigOverlay \
-    SettingsOverlaySea \
-    SystemUIOverlaySea \
-    WifiOverlaySea
-
-PRODUCT_PACKAGES += \
-    NcmTetheringOverlay
-
-PRODUCT_PACKAGES += \
     LineageApertureOverlayYgorBRxx \
     LineageDialerYgorBRxx \
     LineageLauncher3OverlayYgorBRxx \
