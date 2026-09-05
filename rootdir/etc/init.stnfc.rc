@@ -5,7 +5,7 @@
 on post-fs && property:ro.boot.hwname=fleur
     start nfc_hal_service
 
-on post-fs && property:ro.boot.hwname=sea
+on post-fs && property:ro.boot.hwname=fire
     start nfc_hal_service
     setprop ro.vendor.se.type HCE,UICC
 

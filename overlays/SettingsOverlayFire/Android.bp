@@ -5,6 +5,7 @@
 //
 
 runtime_resource_overlay {
-    name: "SystemUIOverlaySea",
+    name: "SettingsOverlayFire",
+
     vendor: true,
 }
