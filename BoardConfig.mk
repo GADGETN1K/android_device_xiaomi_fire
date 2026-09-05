@@ -4,8 +4,8 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-DEVICE_PATH := device/xiaomi/sea
-KERNEL_PATH := device/xiaomi/sea-prebuilt
+DEVICE_PATH := device/xiaomi/fire
+KERNEL_PATH := device/xiaomi/fire-prebuilt
 
 BUILD_BROKEN_DUP_RULES := true
 
@@ -75,14 +75,14 @@ BOARD_RAMDISK_USE_LZ4 := true
 BOARD_MOVE_RECOVERY_RESOURCES_TO_VENDOR_BOOT := true
 BOARD_VENDOR_BOOTIMAGE_PARTITION_SIZE := 67108864
 
-BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 rcupdate.rcu_expedited=1 rcu_nocbs=all rcutree.enable_rcu_lazy log_buf_len=1024K sysctl.kernel.sched_pelt_multiplier=4 androidboot.serialconsole=0
+BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2
 
 # Bootloader
-TARGET_BOOTLOADER_BOARD_NAME := sea
+TARGET_BOOTLOADER_BOARD_NAME := fire
 TARGET_NO_BOOTLOADER := true
 
 # OTA
-TARGET_OTA_ASSERT_DEVICE := sea,ocean
+TARGET_OTA_ASSERT_DEVICE := fire
 
 # Display
 TARGET_SCREEN_DENSITY := 440
@@ -117,7 +117,7 @@ BOOT_KERNEL_MODULES := $(BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD) $(BO
 BOARD_FLASH_BLOCK_SIZE := 131072
 BOARD_SUPER_PARTITION_SIZE := 7516192768
 BOARD_DTBOIMG_PARTITION_SIZE := 8388608
-BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
+BOARD_BOOTIMAGE_PARTITION_SIZE := 134217728
 
 # Partitions (Dynamic)
 BOARD_SUPER_PARTITION_GROUPS := mediatek_dynamic_partitions
@@ -144,7 +144,7 @@ TARGET_COPY_OUT_VENDOR_DLKM := vendor_dlkm
 BOARD_USES_METADATA_PARTITION := true
 
 # Platform
-TARGET_BOARD_PLATFORM := mt6781
+TARGET_BOARD_PLATFORM := mt6768
 
 # Properties
 TARGET_ODM_PROP += $(DEVICE_PATH)/configs/props/odm.prop
@@ -154,7 +154,7 @@ TARGET_PRODUCT_PROP += $(DEVICE_PATH)/configs/props/product.prop
 TARGET_SYSTEM_EXT_PROP += $(DEVICE_PATH)/configs/props/system_ext.prop
 
 # Recovery
-TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.mt6781
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.mt6768
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
@@ -233,4 +233,4 @@ WIFI_HIDL_FEATURE_AWARE := true
 WIFI_HIDL_UNIFIED_SUPPLICANT_SERVICE_RC_ENTRY := true
 
 # Inherit the proprietary files
-include vendor/xiaomi/sea/BoardConfigVendor.mk
+include vendor/xiaomi/fire/BoardConfigVendor.mk

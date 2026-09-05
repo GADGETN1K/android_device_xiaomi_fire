@@ -4,7 +4,7 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-DEVICE_PATH := device/xiaomi/sea
+DEVICE_PATH := device/xiaomi/fire
 
 # Inherit launch_with_vendor_ramdisk product
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_vendor_ramdisk.mk)
@@ -77,7 +77,6 @@ PRODUCT_PACKAGES += \
 
 # Init
 PRODUCT_PACKAGES += \
-    fstab.emmc \
     factory_init.connectivity.common.rc \
     factory_init.connectivity.rc \
     factory_init.project.rc \
@@ -88,8 +87,6 @@ PRODUCT_PACKAGES += \
     init.connectivity.common.rc \
     init.connectivity.rc \
     init.modem.rc \
-    init.mt6781.rc \
-    init.mt6781.usb.rc \
     init.mtkgki.rc \
     init.project.rc \
     init.sensor_1_0.rc \
@@ -101,12 +98,7 @@ PRODUCT_PACKAGES += \
     meta_init.project.rc \
     meta_init.rc \
     meta_init.vendor.rc \
-    init.recovery.mt6781.rc \
-    fstab.mt6781 \
-    fstab.mt6781.vendor_ramdisk
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/fstab.emmc:$(TARGET_VENDOR_RAMDISK_OUT)/first_stage_ramdisk/fstab.emmc
+    fstab.mt6768
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
@@ -335,4 +327,4 @@ PRODUCT_PACKAGES += \
     libwifi-hal-wrapper
 
 # Inherit the proprietary files
-$(call inherit-product, vendor/xiaomi/sea/sea-vendor.mk)
+$(call inherit-product, vendor/xiaomi/fire/fire-vendor.mk)

@@ -27,7 +27,7 @@ from extract_utils.utils import (
 )
 
 namespace_imports = [
-	'device/xiaomi/sea',
+    'device/xiaomi/fire',
 	'hardware/mediatek',
 	'hardware/xiaomi',
     'hardware/mediatek/libmtkperf_client',
@@ -79,8 +79,8 @@ blob_fixups: blob_fixups_user_type = {
     (
         'vendor/lib64/hw/vendor.mediatek.hardware.pq_aidl-impl.so',
         'vendor/lib/hw/vendor.mediatek.hardware.pq_aidl-impl.so',
-        'vendor/lib64/hw/audio.primary.mt6781.so',
-        'vendor/lib/hw/audio.primary.mt6781.so'
+        'vendor/lib64/hw/audio.primary.mt6768.so',
+        'vendor/lib/hw/audio.primary.mt6768.so'
     ): blob_fixup()
         .replace_needed('libtinyxml2.so', 'libtinyxml2-v34.so'),
 
@@ -123,7 +123,7 @@ blob_fixups: blob_fixups_user_type = {
     ('vendor/bin/hw/mtkfusionrild'): blob_fixup()
         .add_needed('libutils-v33.so'),
 
-    ('vendor/lib/mt6781/libneuron_adapter_mgvi.so', 'vendor/lib64/mt6781/libneuron_adapter_mgvi.so'): blob_fixup()
+    ('vendor/lib/mt6768/libneuron_adapter_mgvi.so', 'vendor/lib64/mt6768/libneuron_adapter_mgvi.so'): blob_fixup()
         .add_needed('libz.so')
         .add_needed('liblog.so')
         .add_needed('libnativewindow.so')
@@ -146,7 +146,7 @@ blob_fixups: blob_fixups_user_type = {
 }
 
 module = ExtractUtilsModule(
-    'sea',
+    'fire',
     'xiaomi',
     blob_fixups=blob_fixups,
     lib_fixups=lib_fixups,
