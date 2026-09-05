@@ -102,14 +102,14 @@ TARGET_PREBUILT_DTB := $(KERNEL_PATH)/dtb.img
 BOARD_PREBUILT_DTBOIMAGE := $(KERNEL_PATH)/dtbo.img
 
 BOARD_SYSTEM_KERNEL_MODULES := $(wildcard $(KERNEL_PATH)/system_dlkm/*.ko)
-BOARD_SYSTEM_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PATH)/system_dlkm/modules.load))
+BOARD_SYSTEM_KERNEL_MODULES_LOAD := $(if $(wildcard $(KERNEL_PATH)/system_dlkm/modules.load),$(strip $(shell cat $(KERNEL_PATH)/system_dlkm/modules.load)),)
 
 BOARD_VENDOR_KERNEL_MODULES := $(wildcard $(KERNEL_PATH)/vendor_dlkm/*.ko)
-BOARD_VENDOR_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PATH)/vendor_dlkm/modules.load))
+BOARD_VENDOR_KERNEL_MODULES_LOAD := $(if $(wildcard $(KERNEL_PATH)/vendor_dlkm/modules.load),$(strip $(shell cat $(KERNEL_PATH)/vendor_dlkm/modules.load)),)
 
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(wildcard $(KERNEL_PATH)/vendor_ramdisk/*.ko)
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PATH)/vendor_ramdisk/modules.load))
-BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PATH)/vendor_ramdisk/modules.load.recovery))
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(if $(wildcard $(KERNEL_PATH)/vendor_ramdisk/modules.load),$(strip $(shell cat $(KERNEL_PATH)/vendor_ramdisk/modules.load)),)
+BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD := $(if $(wildcard $(KERNEL_PATH)/vendor_ramdisk/modules.load.recovery),$(strip $(shell cat $(KERNEL_PATH)/vendor_ramdisk/modules.load.recovery)),)
 
 BOOT_KERNEL_MODULES := $(BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD) $(BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD)
 
