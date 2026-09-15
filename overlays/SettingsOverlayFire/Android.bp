@@ -5,6 +5,7 @@
 //
 
 runtime_resource_overlay {
-    name: "FrameworksOverlaySea",
+    name: "SettingsOverlayFire",
+
     vendor: true,
 }

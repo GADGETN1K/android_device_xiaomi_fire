@@ -160,11 +160,11 @@ PRODUCT_PACKAGES += \
     libbase_shim
 
 PRODUCT_PACKAGES += \
-    FrameworksOverlaySea \
+    FrameworksOverlayFire \
     TetheringConfigOverlay \
-    SettingsOverlaySea \
-    SystemUIOverlaySea \
-    WifiOverlaySea
+    SettingsOverlayFire \
+    SystemUIOverlayFire \
+    WifiOverlayFire
 
 PRODUCT_PACKAGES += \
     NcmTetheringOverlay
