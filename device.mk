@@ -101,9 +101,9 @@ PRODUCT_PACKAGES += \
     meta_init.project.rc \
     meta_init.rc \
     meta_init.vendor.rc \
-    init.recovery.mt6781.rc \
-    fstab.mt6781 \
-    fstab.mt6781.vendor_ramdisk
+    init.recovery.mt6768.rc \
+    fstab.mt6768 \
+    fstab.mt6768
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/fstab.emmc:$(TARGET_VENDOR_RAMDISK_OUT)/first_stage_ramdisk/fstab.emmc
