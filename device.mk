@@ -4,7 +4,7 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-DEVICE_PATH := device/xiaomi/sea
+DEVICE_PATH := device/xiaomi/fire
 
 # Inherit launch_with_vendor_ramdisk product
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_vendor_ramdisk.mk)
@@ -120,7 +120,7 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/mediatek/wlan/wifi_hal
 
 # Boot animation
-TARGET_SCREEN_HEIGHT := 2400
+TARGET_SCREEN_HEIGHT := 2460
 TARGET_SCREEN_WIDTH := 1080
 
 # Configstore
@@ -335,4 +335,4 @@ PRODUCT_PACKAGES += \
     libwifi-hal-wrapper
 
 # Inherit the proprietary files
-$(call inherit-product, vendor/xiaomi/sea/sea-vendor.mk)
+$(call inherit-product, vendor/xiaomi/fire/fire-vendor.mk)
