@@ -301,9 +301,6 @@ $(call soong_config_set_bool,lineagelight,scan_for_backlight_devices,$(TARGET_LI
 PRODUCT_PACKAGES += \
     android.hardware.light-service.lineage
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/displayconfig/common_multi_factor_thermal_brightness_control.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/displayconfig/common_multi_factor_thermal_brightness_control.xml \
-    $(LOCAL_PATH)/configs/displayconfig/display_id_4627039422300187648.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/displayconfig/display_id_4627039422300187648.xml
 
 
 # Sensors
