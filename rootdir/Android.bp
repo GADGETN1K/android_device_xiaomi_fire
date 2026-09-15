@@ -1,6 +1,5 @@
 //
-// Copyright (C) 2025 The LineageOS Project
-//
+// SPDX-FileCopyrightText: The LineageOS Project
 // SPDX-License-Identifier: Apache-2.0
 //
 
@@ -14,6 +13,12 @@ sh_binary {
 sh_binary {
     name: "init.pstore_blk.sh",
     src: "bin/init.pstore_blk.sh",
+    vendor: true,
+}
+
+sh_binary {
+    name: "mishow.sh",
+    src: "bin/mishow.sh",
     vendor: true,
 }
 
@@ -124,13 +129,6 @@ prebuilt_etc {
 }
 
 prebuilt_etc {
-    name: "init.stnfc.rc",
-    src: "etc/init.stnfc.rc",
-    sub_dir: "init/hw",
-    vendor: true,
-}
-
-prebuilt_etc {
     name: "init_connectivity.rc",
     src: "etc/init_connectivity.rc",
     sub_dir: "init/hw",
@@ -179,14 +177,26 @@ prebuilt_etc {
     vendor: true,
 }
 
+prebuilt_etc {
+    name: "multi_init.rc",
+    src: "etc/multi_init.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
 // fstab
+prebuilt_etc {
+    name: "fstab.enableswap",
+    src: "etc/fstab.enableswap",
+    vendor: true,
+}
+
+// HyperOS 2 vendor ramdisk files
 prebuilt_etc {
     name: "fstab.emmc",
     src: "etc/fstab.emmc",
     vendor: true,
 }
-
-
 
 prebuilt_etc {
     name: "fstab.mt6768",

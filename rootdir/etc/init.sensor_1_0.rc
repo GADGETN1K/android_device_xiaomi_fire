@@ -203,4 +203,3 @@ on post-fs-data
     chown system system /sys/class/sensor/m_bio_misc/biodelay
     chown system system /sys/class/sensor/m_bio_misc/biobatch
     chown system system /sys/class/sensor/m_bio_misc/bioflush
-

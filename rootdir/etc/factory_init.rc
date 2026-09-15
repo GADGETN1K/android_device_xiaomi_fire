@@ -9,6 +9,13 @@ import /init.environ.rc
 import /vendor/etc/init/trustonic.rc
 import ${ro.vendor.rc}init.nvdata.rc
 import /vendor/etc/init/microtrust.rc
+import /vendor/etc/init/vendor.microtrust.hardware.capi@2.0-service.rc
+import /vendor/etc/init/android.hardware.keymaster@4.0-service.beanpod.rc
+import /vendor/etc/init/android.hardware.keymaster@4.1-service.beanpod.rc
+import /vendor/etc/init/microtrust.bp_kmsetkey_ca.rc
+import /vendor/etc/init/vendor.microtrust.hardware.thh@2.0-service.rc
+import /vendor/etc/init/microtrust.init_thh.rc
+import /vendor/etc/init/trustkernel.rc
 import /vendor/etc/init/hw/init.aee.rc
 import /system_ext/etc/init/hw/init.aee.rc
 import /system/etc/init/update_verifier.rc
@@ -22,15 +29,16 @@ import /vendor/etc/init/hw/init.stnfc.rc
 #copy from system/etc for APEX
 import /system/etc/init/apexd.rc
 import /system/etc/init/art_apex_boot_integrity.rc
+
+import /system/etc/init/vold.rc
+
 import /vendor/etc/init/hw/factory_init.project.rc
 import /system/etc/init/servicemanager.rc
 import /system/etc/init/hwservicemanager.rc
 import /system/etc/init/android.hidl.allocator@1.0-service.rc
-import /system/etc/init/vold.rc
-
 import /vendor/etc/init/android.hardware.boot@1.0-service.rc
-import /vendor/etc/init/android.hardware.health@2.1-service.rc
 import ${ro.vendor.rc}multi_init.rc
+
 
 on early-init
     # Set init and its forked children's oom_adj.
@@ -45,12 +53,14 @@ on early-init
     # Set the security context of /postinstall if present.
     restorecon /postinstall
 
+
     # Set up linker config subdirectories based on mount namespaces
     mkdir /linkerconfig/bootstrap 0755
     mkdir /linkerconfig/default 0755
 
     # Generate ld.config.txt for early executed processes
     exec -- /system/bin/bootstrap/linkerconfig --target /linkerconfig/bootstrap
+
     chmod 644 /linkerconfig/bootstrap/ld.config.txt
     copy /linkerconfig/bootstrap/ld.config.txt /linkerconfig/default/ld.config.txt
     chmod 644 /linkerconfig/default/ld.config.txt
@@ -59,6 +69,8 @@ on early-init
     mount none /linkerconfig/bootstrap /linkerconfig bind rec
 
     start ueventd
+
+
     # Run apexd-bootstrap so that APEXes that provide critical libraries
     # become available. Note that this is executed as exec_start to ensure that
     # the libraries are available to the processes started after this statement.
@@ -66,9 +78,6 @@ on early-init
 
     # Generate linker config based on apex mounted in bootstrap namespace
     update_linker_config
-
-    # force on usb
-    # write /sys/module/musb_hdrc/parameters/musb_force_on 1
 
 #INTERNAL_START
     mount debugfs debugfs /sys/kernel/debug
@@ -95,6 +104,9 @@ sysclktz 0
     # Backward compatibility.
     symlink /sys/kernel/debug /d
 
+    # Link /vendor to /system/vendor for devices without a vendor partition.
+    symlink /system/vendor /vendor
+
 # Temp Backward compatibility
     symlink /dev/block/platform/bootdevice/by-name/boot /dev/bootimg
     symlink /dev/block/platform/bootdevice/by-name/recovery /dev/recovery
@@ -106,10 +118,6 @@ sysclktz 0
     symlink /dev/block/platform/bootdevice/by-name/nvram /dev/nvram
     symlink /dev/block/platform/bootdevice/by-name/para /dev/misc
     symlink /dev/block/platform/bootdevice/by-name/logo /dev/logo
-
-
-# Link /vendor to /system/vendor for devices without a vendor partition.
-    symlink /system/vendor /vendor
 
     # Mount cgroup mount point for cpu accounting
     mount cgroup none /acct cpuacct
@@ -241,6 +249,16 @@ sysclktz 0
     write /proc/sys/net/ipv6/conf/all/accept_redirects 0
 
     #INTERNAL_START
+    mkdir /mnt/vendor/protect_f 0771 system system
+    mkdir /mnt/vendor/protect_s 0771 system system
+    symlink /sdcard /mnt/sdcard
+    #Create nvdata mount point
+    mkdir /mnt/vendor/nvdata 0771 system system
+    mkdir /mnt/vendor/nvcfg 0771 system system
+
+    #Create CIP mount point
+    mkdir /custom
+
     mkdir /mnt/cd-rom 0000 system system
     #INTERNAL_END
     # enable armv8_deprecated instruction hooks
@@ -250,10 +268,11 @@ sysclktz 0
     symlink /proc/self/fd /dev/fd
     # set RLIMIT_NICE to allow priorities from 19 to -20
     setrlimit nice 40 40
-
+ 
     start servicemanager
     start hwservicemanager
     start hidl_memory
+
     # Healthd can trigger a full boot from charger mode by signaling this
     # property when the power button is held.
     on property:sys.boot_from_charger_mode=1
@@ -343,7 +362,7 @@ on fs
 #INTERNAL_START
     write /proc/bootprof "INIT:Mount_START"
     start vendor.boot-hal-1-2
-    mount_all --early
+    mount_all /vendor/etc/fstab.mt6768 --early
     write /proc/bootprof "INIT:Mount_END"
 #INTERNAL_END
 # mount different fs end
@@ -355,7 +374,6 @@ on post-fs
     start vendor.boot-hal-1-2
     start merged_hal_service
     start capi-2-0
-    start power-hal-1-0
     # Once everything is setup, no need to modify /.
     # The bind+ro combination avoids modifying any other mount flags.
     # mount rootfs rootfs / remount bind ro
@@ -429,17 +447,18 @@ on late-fs
     start vendor.keymaster-4-0
     start vendor.keymaster-4-0-trustonic
     start vendor.keymaster-4-0-beanpod
+    start vendor.keymaster-4-1-beanpod
     start keymaster_attestation-1-1
     exec_start wait_for_keymaster
-    mount_all --late
+    mount_all /vendor/etc/fstab.mt6768 --late
 
 on post-fs-data
     write /proc/bootprof "INIT:post-fs-data"
     wait_for_prop vendor.all.modules.ready 1
     write /proc/bootprof "modprobe: Load_Module_DONE"
 
-    #Thermal
-    mkdir /data/.tp/ 0775 system system
+	#Thermal
+	mkdir /data/.tp/ 0775 system system
 
     # symlink to bugreport storage location
     rm /data/bugreports
@@ -566,7 +585,7 @@ on zygote-start && property:ro.crypto.state=encrypted && property:ro.crypto.type
 
 on boot
     setprop sys.usb.configfs 1
-	setprop sys.usb.ffs.aio_compat 1
+	setprop sys.usb.ffs.aio_compat 0
     setprop vendor.usb.clear boot
 
     # TTY
@@ -591,7 +610,7 @@ on boot
     chmod 0664 /sys/class/leds/lcd-backlight/brightness
     chown system system /sys/class/leds/lcd-backlight/brightness
 
-    # power manager
+    # Power Manager
     write /sys/power/pm_freeze_timeout 2000
 
 # basic network init
@@ -659,8 +678,13 @@ on defaultcrypto
 # mtk modification:
 #   To speed up the booting in meta/factory mode, we don't encrypt the device.
 #   And then handle it as 'unencrypted' state.
-on encrypt
+on encrypt && property:ro.vendor.mtk_f2fs_enable=0
     mount ext4 /dev/block/platform/bootdevice/by-name/userdata /data noatime nosuid nodev noauto_da_alloc discard wait
+
+on encrypt && property:ro.vendor.mtk_f2fs_enable=1
+    mount f2fs /dev/block/platform/bootdevice/by-name/userdata /data noatime nosuid nodev discard wait
+
+on encrypt
     setprop vendor.crypto.fake_encrypt 1
     setprop vold.post_fs_data_done 0
     trigger post-fs-data
@@ -799,8 +823,6 @@ service emdlogger6 /system/bin/emdlogger6
 ## Custom service area (END)
 
 on property:vendor.usb.clear=1 && property:sys.usb.configfs=1
-    stop adbd
-    setprop sys.usb.ffs.ready 0
     write /config/usb_gadget/g1/UDC "none"
     write /config/usb_gadget/g1/bDeviceClass 0
     write /config/usb_gadget/g1/bDeviceSubClass 0
@@ -811,36 +833,40 @@ on property:vendor.usb.clear=1 && property:sys.usb.configfs=1
     rm /config/usb_gadget/g1/configs/b.1/f4
     write /sys/devices/platform/mt_usb/saving 0
     setprop vendor.usb.clear 2
-    start adbd
 
 #mass_storage,adb,acm
-on property:ro.boot.usbconfig=0 && property:sys.usb.configfs=1 && property:vendor.usb.clear=boot
+on property:ro.boot.usbconfig=0 && property:sys.usb.configfs=1
     start adbd
 
-on property:sys.usb.ffs.ready=1 && property:ro.boot.usbconfig=0 && \
-    property:sys.usb.configfs=1 && property:vendor.usb.clear=boot
+    # Generate linker config based on apex mounted in bootstrap namespace
+    update_linker_config
+
+on property:sys.usb.ffs.ready=1 && property:ro.boot.usbconfig=0 && property:sys.usb.configfs=1
+    write /config/usb_gadget/g1/UDC "none"
     write /config/usb_gadget/g1/strings/0x409/serialnumber ${ro.serialno}
     write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "adb_acm"
     write /config/usb_gadget/g1/idProduct 0x2006
     symlink /config/usb_gadget/g1/functions/mass_storage.usb0 /config/usb_gadget/g1/configs/b.1/f1
     symlink /config/usb_gadget/g1/functions/ffs.adb /config/usb_gadget/g1/configs/b.1/f2
     symlink /config/usb_gadget/g1/functions/acm.gs0 /config/usb_gadget/g1/configs/b.1/f3
-    write /config/usb_gadget/g1/UDC ${sys.usb.controller}
-    setprop vendor.usb.acm_idx "1"
+    write /config/usb_gadget/g1/UDC "musb-hdrc"
 
 #acm (does not set serialnumber)
-on property:ro.boot.usbconfig=1 && property:sys.usb.configfs=1 && property:vendor.usb.clear=boot
+on property:ro.boot.usbconfig=1 && property:sys.usb.configfs=1
     write /config/usb_gadget/g1/UDC "none"
     write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "acm"
     write /config/usb_gadget/g1/idProduct 0x2007
     write /config/usb_gadget/g1/bDeviceClass 02
     symlink /config/usb_gadget/g1/functions/acm.gs0 /config/usb_gadget/g1/configs/b.1/f1
-    write /config/usb_gadget/g1/UDC ${sys.usb.controller}
-    setprop vendor.usb.acm_idx "1"
+    write /config/usb_gadget/g1/UDC "musb-hdrc"
 
 #singloe modem comport for factory mode
 on property:sys.usb.config=gs3,dual_acm && property:sys.usb.configfs=1
+    start adbd
     setprop vendor.usb.clear 1
+
+    # Generate linker config based on apex mounted in bootstrap namespace
+    update_linker_config
 
 on property:sys.usb.ffs.ready=1 && property:sys.usb.config=gs3,dual_acm && \
 property:vendor.usb.clear=2 && property:sys.usb.configfs=1
@@ -854,10 +880,13 @@ property:vendor.usb.clear=2 && property:sys.usb.configfs=1
     write /config/usb_gadget/g1/UDC ${sys.usb.controller}
     setprop sys.usb.state ${sys.usb.config}
     setprop vendor.usb.clear 0
-    setprop vendor.usb.acm_idx "1,4"
 
 on property:sys.usb.config=gs1gs3,dual_acm && property:sys.usb.configfs=1
+    start adbd
     setprop vendor.usb.clear 1
+
+    # Generate linker config based on apex mounted in bootstrap namespace
+    update_linker_config
 
 on property:sys.usb.ffs.ready=1 && property:sys.usb.config=gs1gs3,dual_acm && \
 property:vendor.usb.clear=2 && property:sys.usb.configfs=1
@@ -871,10 +900,13 @@ property:vendor.usb.clear=2 && property:sys.usb.configfs=1
     write /config/usb_gadget/g1/UDC ${sys.usb.controller}
     setprop sys.usb.state ${sys.usb.config}
     setprop vendor.usb.clear 0
-    setprop vendor.usb.acm_idx "1,2,4"
 
 on property:sys.usb.config=gs1gs3 && property:sys.usb.configfs=1
+    start adbd
     setprop vendor.usb.clear 1
+
+    # Generate linker config based on apex mounted in bootstrap namespace
+    update_linker_config
 
 on property:sys.usb.ffs.ready=1 && property:sys.usb.config=gs1gs3 && \
 property:vendor.usb.clear=2 && property:sys.usb.configfs=1
@@ -887,6 +919,5 @@ property:vendor.usb.clear=2 && property:sys.usb.configfs=1
     symlink /config/usb_gadget/g1/functions/acm.gs3 /config/usb_gadget/g1/configs/b.1/f4
     write /config/usb_gadget/g1/UDC ${sys.usb.controller}
     setprop vendor.usb.clear 0
-    setprop vendor.usb.acm_idx "1,4"
 
 #INTERNAL_END
