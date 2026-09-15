@@ -78,32 +78,16 @@ PRODUCT_PACKAGES += \
 # Init
 PRODUCT_PACKAGES += \
     fstab.emmc \
-    factory_init.connectivity.common.rc \
-    factory_init.connectivity.rc \
-    factory_init.project.rc \
-    factory_init.rc \
-    init.aee.rc \
-    init.ago.rc \
+    fstab.mt6768 \
     init.cgroup.rc \
-    init.connectivity.common.rc \
     init.connectivity.rc \
     init.modem.rc \
-    init.mt6781.rc \
-    init.mt6781.usb.rc \
-    init.mtkgki.rc \
+    init.mt6768.rc \
+    init.mt6768.usb.rc \
     init.project.rc \
     init.sensor_1_0.rc \
-    init.stnfc.rc \
-    init_connectivity.rc \
-    meta_init.connectivity.common.rc \
-    meta_init.connectivity.rc \
-    meta_init.modem.rc \
-    meta_init.project.rc \
-    meta_init.rc \
-    meta_init.vendor.rc \
-    init.recovery.mt6768.rc \
-    fstab.mt6768 \
-    fstab.mt6768
+    ueventd.mt6768.rc \
+    init.recovery.mt6768.rc
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/fstab.emmc:$(TARGET_VENDOR_RAMDISK_OUT)/first_stage_ramdisk/fstab.emmc
