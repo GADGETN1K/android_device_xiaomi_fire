@@ -6,7 +6,7 @@ system_ext/etc/init/android.hardware.audio.parameter_parser.service.rc
 vendor/bin/hw/android.hardware.audio.service-aidl.mediatek
 vendor/etc/init/android.hardware.audio.service-aidl.mediatek.rc
 vendor/etc/vintf/manifest/android.hardware.audio.effect.service-aidl.xml
-# vendor/etc/vintf/manifest/android.hardware.audio.service-aidl.xml
+vendor/etc/vintf/manifest/android.hardware.audio.service-aidl.xml
 vendor/lib/hw/audio.primary.default.so
 vendor/lib/hw/audio.primary.mt6768.so
 # vendor/lib/hw/audio.r_submix.default.so
@@ -16,7 +16,7 @@ vendor/lib/hw/vendor.mediatek.hardware.audio-impl.so
 vendor/lib/libaedv.so
 #y vendor/lib/libalsautils.so
 #y vendor/lib/libalsautilsv2.so
-#y vendor/lib/libaudio_aidl_conversion_common_ndk.so
+vendor/lib/libaudio_aidl_conversion_common_ndk.so
 #y vendor/lib/libaudioaidlcommon.so
 vendor/lib/libaudiotoolkit_vendor.so
 vendor/lib/libbluetooth_audio_session_aidl_mtk.so
@@ -37,7 +37,7 @@ vendor/lib64/hw/vendor.mediatek.hardware.audio-impl.so
 vendor/lib64/libaedv.so
 #y vendor/lib64/libalsautils.so
 #y vendor/lib64/libalsautilsv2.so
-#y vendor/lib64/libaudio_aidl_conversion_common_ndk.so
+vendor/lib64/libaudio_aidl_conversion_common_ndk.so
 #y vendor/lib64/libaudioaidlcommon.so
 vendor/lib64/libaudiotoolkit_vendor.so
 vendor/lib64/libbluetooth_audio_session_aidl_mtk.so
@@ -101,8 +101,8 @@ vendor/lib64/vendor.mediatek.hardware.audio-V1-ndk.so
 #y vendor/lib64/libvibratorutils.so
 
 # Audio configs
-system/etc/audio_effects.conf
-system/etc/audio_effects.xml
+#y system/etc/audio_effects.conf
+#y system/etc/audio_effects.xml
 #y system_ext/etc/a2dp_audio_policy_configuration.xml
 #y system_ext/etc/a2dp_in_audio_policy_configuration.xml
 #y system_ext/etc/audio_policy_configuration.xml
@@ -1004,28 +1004,28 @@ vendor/lib/hw/local_time.default.so
 vendor/lib64/hw/local_time.default.so
 
 # Media
-system/etc/seccomp_policy/mediacodec.policy
-system/lib/graphicbuffersource-aidl-ndk.so
-system/lib/libmedia_codeclist.so
-system/lib/libstagefright.so.hbtf
-system/lib/libstagefright_aidl_bufferpool2.so
-system/lib/libstagefright_bufferpool@2.0.1.so
-system/lib/libstagefright_bufferpool@2.0.1.so.hbtf
-system/lib/libstagefright_codecbase.so
-system/lib/libstagefright_codecbase.so.hbtf
-system/lib/libstagefright_foundation.so.hbtf
-system/lib/libstagefright_framecapture_utils.so
-system/lib/libstagefright_framecapture_utils.so.hbtf
-system/lib/libstagefright_graphicbuffersource_aidl.so
-system/lib/libstagefright_surface_utils.so
-system/lib64/graphicbuffersource-aidl-ndk.so
-system/lib64/libmedia_codeclist.so
-system/lib64/libstagefright_aidl_bufferpool2.so
-system/lib64/libstagefright_bufferpool@2.0.1.so
-system/lib64/libstagefright_codecbase.so
-system/lib64/libstagefright_framecapture_utils.so
-system/lib64/libstagefright_graphicbuffersource_aidl.so
-system/lib64/libstagefright_surface_utils.so
+#y system/etc/seccomp_policy/mediacodec.policy
+#y system/lib/graphicbuffersource-aidl-ndk.so
+#y system/lib/libmedia_codeclist.so
+#y system/lib/libstagefright.so.hbtf
+#y system/lib/libstagefright_aidl_bufferpool2.so
+#y system/lib/libstagefright_bufferpool@2.0.1.so
+#y system/lib/libstagefright_bufferpool@2.0.1.so.hbtf
+#y system/lib/libstagefright_codecbase.so
+#y system/lib/libstagefright_codecbase.so.hbtf
+#y system/lib/libstagefright_foundation.so.hbtf
+#y system/lib/libstagefright_framecapture_utils.so
+#y system/lib/libstagefright_framecapture_utils.so.hbtf
+#y system/lib/libstagefright_graphicbuffersource_aidl.so
+#y system/lib/libstagefright_surface_utils.so
+#y system/lib64/graphicbuffersource-aidl-ndk.so
+#y system/lib64/libmedia_codeclist.so
+#y system/lib64/libstagefright_aidl_bufferpool2.so
+#y system/lib64/libstagefright_bufferpool@2.0.1.so
+#y system/lib64/libstagefright_codecbase.so
+#y system/lib64/libstagefright_framecapture_utils.so
+#y system/lib64/libstagefright_graphicbuffersource_aidl.so
+#y system/lib64/libstagefright_surface_utils.so
 system_ext/lib/libged_sys.so
 system_ext/lib/libgralloc_extra_sys.so
 system_ext/lib/libsf_cpupolicy.so
@@ -1103,7 +1103,7 @@ vendor/lib64/hw/android.hardware.nfc@1.0-impl.so
 vendor/lib64/vendor.nxp.hardware.nfc@2.0.so
 
 # NFC configs
-system/etc/libnfc-nci.conf
+#y system/etc/libnfc-nci.conf
 odm/etc/libnfc-nxp.conf
 odm/etc/libnfc-nxp_RF.conf
 vendor/etc/libnfc-nci.conf
@@ -2151,58 +2151,58 @@ vendor/etc/mbrain/mbrain_runtime_smoothmodel_config.bin
 vendor/etc/mbrain/mbrain_runtime_spu_config.bin
 vendor/etc/mbrain/mbrain_runtime_video_config.bin
 vendor/etc/mbrain/mbrain_static_config.bin
-#y vendor/etc/mmigroup/numraw/enum1.mp3
-#y vendor/etc/mmigroup/numraw/enum2.mp3
-#y vendor/etc/mmigroup/numraw/enum3.mp3
-#y vendor/etc/mmigroup/numraw/enum4.mp3
-#y vendor/etc/mmigroup/numraw/enum5.mp3
-#y vendor/etc/mmigroup/numraw/enum6.mp3
-#y vendor/etc/mmigroup/numraw/enum7.mp3
-#y vendor/etc/mmigroup/numraw/enum8.mp3
-#y vendor/etc/mmigroup/numraw/enum9.mp3
-#y vendor/etc/mmigroup/numraw/num1.wav
-#y vendor/etc/mmigroup/numraw/num2.wav
-#y vendor/etc/mmigroup/numraw/num3.wav
-#y vendor/etc/mmigroup/numraw/num4.wav
-#y vendor/etc/mmigroup/numraw/num5.wav
-#y vendor/etc/mmigroup/numraw/num6.wav
-#y vendor/etc/mmigroup/numraw/num7.wav
-#y vendor/etc/mmigroup/numraw/num8.wav
-#y vendor/etc/mmigroup/numraw/num9.wav
-#y vendor/etc/mmigroup/CommonConf.json
-#y vendor/etc/mmigroup/CommonParam.json
-#y vendor/etc/mmigroup/FQC.json
-#y vendor/etc/mmigroup/MMI2.json
-#y vendor/etc/mmigroup/MMI2_1.json
-#y vendor/etc/mmigroup/MMIGroupASAutoTest.json
-#y vendor/etc/mmigroup/MMIGroupAudioAta.json
-#y vendor/etc/mmigroup/MMIGroupAudioManual.json
-#y vendor/etc/mmigroup/MMIGroupCameraAta.json
-#y vendor/etc/mmigroup/MMIGroupCameraManual.json
-#y vendor/etc/mmigroup/MMIGroupFmt.json
-#y vendor/etc/mmigroup/MMIGroupIQC.json
-#y vendor/etc/mmigroup/MMIGroupMmiAta.json
-#y vendor/etc/mmigroup/MMIGroupMmiAtaManual.json
-#y vendor/etc/mmigroup/MMIGroupMmiManual.json
-#y vendor/etc/mmigroup/MMIGroupNormal.json
-#y vendor/etc/mmigroup/MMIGroupPcbaAta.json
-#y vendor/etc/mmigroup/MMIGroupPcbaManual.json
-#y vendor/etc/mmigroup/MMIGroupSensorAta.json
-#y vendor/etc/mmigroup/MMIGroupSensorManual.json
-#y vendor/etc/mmigroup/MainMenuConfig.json
-#y vendor/etc/mmigroup/customerAta.json
-#y vendor/etc/mmigroup/factoryInterfaceConfig.json
-#y vendor/etc/mmigroup/rec.wav
-#y vendor/etc/mmigroup/rec0.wav
-#y vendor/etc/mmigroup/spk.wav
-#y vendor/etc/mmigroup/ultrasound.wav
-#y vendor/etc/runintestii/voice/music.wav
-#y vendor/etc/runintestii/voice/videotest.mp4
-#y vendor/etc/runintestii/CameraConfig.json
-#y vendor/etc/runintestii/OtherConfig.json
-#y vendor/etc/runintestii/RebootConfig.json
-#y vendor/etc/runintestii/SoftwareConfig.json
-#y vendor/etc/runintestii/image.zip
+vendor/etc/mmigroup/numraw/enum1.mp3
+vendor/etc/mmigroup/numraw/enum2.mp3
+vendor/etc/mmigroup/numraw/enum3.mp3
+vendor/etc/mmigroup/numraw/enum4.mp3
+vendor/etc/mmigroup/numraw/enum5.mp3
+vendor/etc/mmigroup/numraw/enum6.mp3
+vendor/etc/mmigroup/numraw/enum7.mp3
+vendor/etc/mmigroup/numraw/enum8.mp3
+vendor/etc/mmigroup/numraw/enum9.mp3
+vendor/etc/mmigroup/numraw/num1.wav
+vendor/etc/mmigroup/numraw/num2.wav
+vendor/etc/mmigroup/numraw/num3.wav
+vendor/etc/mmigroup/numraw/num4.wav
+vendor/etc/mmigroup/numraw/num5.wav
+vendor/etc/mmigroup/numraw/num6.wav
+vendor/etc/mmigroup/numraw/num7.wav
+vendor/etc/mmigroup/numraw/num8.wav
+vendor/etc/mmigroup/numraw/num9.wav
+vendor/etc/mmigroup/CommonConf.json
+vendor/etc/mmigroup/CommonParam.json
+vendor/etc/mmigroup/FQC.json
+vendor/etc/mmigroup/MMI2.json
+vendor/etc/mmigroup/MMI2_1.json
+vendor/etc/mmigroup/MMIGroupASAutoTest.json
+vendor/etc/mmigroup/MMIGroupAudioAta.json
+vendor/etc/mmigroup/MMIGroupAudioManual.json
+vendor/etc/mmigroup/MMIGroupCameraAta.json
+vendor/etc/mmigroup/MMIGroupCameraManual.json
+vendor/etc/mmigroup/MMIGroupFmt.json
+vendor/etc/mmigroup/MMIGroupIQC.json
+vendor/etc/mmigroup/MMIGroupMmiAta.json
+vendor/etc/mmigroup/MMIGroupMmiAtaManual.json
+vendor/etc/mmigroup/MMIGroupMmiManual.json
+vendor/etc/mmigroup/MMIGroupNormal.json
+vendor/etc/mmigroup/MMIGroupPcbaAta.json
+vendor/etc/mmigroup/MMIGroupPcbaManual.json
+vendor/etc/mmigroup/MMIGroupSensorAta.json
+vendor/etc/mmigroup/MMIGroupSensorManual.json
+vendor/etc/mmigroup/MainMenuConfig.json
+vendor/etc/mmigroup/customerAta.json
+vendor/etc/mmigroup/factoryInterfaceConfig.json
+vendor/etc/mmigroup/rec.wav
+vendor/etc/mmigroup/rec0.wav
+vendor/etc/mmigroup/spk.wav
+vendor/etc/mmigroup/ultrasound.wav
+vendor/etc/runintestii/voice/music.wav
+vendor/etc/runintestii/voice/videotest.mp4
+vendor/etc/runintestii/CameraConfig.json
+vendor/etc/runintestii/OtherConfig.json
+vendor/etc/runintestii/RebootConfig.json
+vendor/etc/runintestii/SoftwareConfig.json
+vendor/etc/runintestii/image.zip
 vendor/etc/seccomp_policy/android.hardware.media.c2@1.2-extended-seccomp-policy
 vendor/etc/seccomp_policy/android.hardware.media.c2@1.2-mediatek-seccomp-policy
 vendor/etc/seccomp_policy/mediaextractor.policy
@@ -2372,7 +2372,7 @@ vendor/etc/security/cacerts_supl/7651b327.0
 vendor/etc/security/cacerts_supl/c542733d.0
 vendor/etc/security/cacerts_supl/cec771d5.0
 vendor/etc/security/cacerts_supl/f336e3d1.0
-#y vendor/etc/stability/std.mp3
+vendor/etc/stability/std.mp3
 # vendor/etc/vintf/manifest/CommandService.xml
 # vendor/etc/vintf/manifest/FastSwitch.xml
 vendor/etc/vintf/manifest/bluetooth_audio.xml
