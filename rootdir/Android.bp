@@ -193,3 +193,17 @@ prebuilt_etc {
     vendor: true,
     vendor_ramdisk_available: true,
 }
+
+prebuilt_etc {
+    name: "fstab.mt6768",
+    src: "etc/fstab.mt6768",
+    vendor: true,
+    vendor_ramdisk_available: true,
+}
+
+prebuilt_etc {
+    name: "init.recovery.mt6768.rc",
+    src: "etc/init.recovery.mt6768.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
