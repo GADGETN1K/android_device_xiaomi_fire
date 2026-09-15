@@ -140,8 +140,8 @@ PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
 # DTB
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)-prebuilt/dtb.img:dtb.img \
-    $(LOCAL_PATH)-prebuilt/kernel:kernel
+    $(KERNEL_PATH)/dtb.img:dtb.img \
+    $(KERNEL_PATH)/kernel:kernel
 
 # Fingerprint
 PRODUCT_PACKAGES += \
