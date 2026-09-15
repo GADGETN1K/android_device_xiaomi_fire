@@ -246,39 +246,41 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.bluetooth-service.mediatek
 
-PRODUCT_PACKAGES += \
-    audio.primary.default \
-    audio.r_submix.default \
-    audio_policy.stub \
-    audio.usb.default
+# Provided by the fire stock blob set; source modules would collide in Soong.
+# PRODUCT_PACKAGES += \
+#    audio.primary.default \
+#    audio.r_submix.default \
+#    audio_policy.stub \
+#    audio.usb.default
 
 PRODUCT_PACKAGES += \
     audio.bluetooth.default
 
-PRODUCT_PACKAGES += \
-    libaecsw \
-    libagc1sw \
-    libagc2sw \
-    libbassboostsw \
-    libbundleaidl \
-    libdownmixaidl \
-    libdynproc \
-    libdynamicsprocessingaidl \
-    libequalizersw \
-    libenvreverbsw \
-    libhapticgenerator \
-    libhapticgeneratoraidl \
-    libloudnessenhanceraidl \
-    libnssw \
-    libpreprocessingaidl \
-    libpresetreverbsw \
-    libreverbaidl \
-    libspatializersw \
-    libvibratorutils \
-    libvirtualizersw \
-    libvisualizeraidl \
-    libvolumesw \
-    libextensioneffect
+# Provided by the fire stock blob set; source modules would collide in Soong.
+# PRODUCT_PACKAGES += \
+#    libaecsw \
+#    libagc1sw \
+#    libagc2sw \
+#    libbassboostsw \
+#    libbundleaidl \
+#    libdownmixaidl \
+#    libdynproc \
+#    libdynamicsprocessingaidl \
+#    libequalizersw \
+#    libenvreverbsw \
+#    libhapticgenerator \
+#    libhapticgeneratoraidl \
+#    libloudnessenhanceraidl \
+#    libnssw \
+#    libpreprocessingaidl \
+#    libpresetreverbsw \
+#    libreverbaidl \
+#    libspatializersw \
+#    libvibratorutils \
+#    libvirtualizersw \
+#    libvisualizeraidl \
+#    libvolumesw \
+#    libextensioneffect
 
 PRODUCT_PACKAGES += \
     MtkInCallService
@@ -293,9 +295,10 @@ PRODUCT_PACKAGES += \
     android.hardware.usb.gadget-service.mediatek
 
 # Health
-PRODUCT_PACKAGES += \
-    android.hardware.health-service.example \
-    android.hardware.health-service.example_recovery
+# Provided by the fire stock blob set; source modules would collide in Soong.
+# PRODUCT_PACKAGES += \
+#    android.hardware.health-service.example \
+#    android.hardware.health-service.example_recovery
 
 # Lights
 $(call soong_config_set_bool,lineagelight,scan_for_backlight_devices,$(TARGET_LIGHT_HAL_SCAN_FOR_BACKLIGHT_DEVICES))
@@ -316,12 +319,13 @@ PRODUCT_PACKAGES += \
     sensors.dynamic_sensor_hal
 
 # Thermal
-PRODUCT_PACKAGES += \
-    android.hardware.thermal-service.mediatek \
-    thermal_symlinks_mediatek
+# Provided by the fire stock blob set; source modules would collide in Soong.
+# PRODUCT_PACKAGES += \
+#    android.hardware.thermal-service.mediatek \
+#    thermal_symlinks_mediatek
 
-PRODUCT_PACKAGES += \
-    android.hardware.memtrack-service.mediatek
+# PRODUCT_PACKAGES += \
+#    android.hardware.memtrack-service.mediatek
 
 # NFC
 PRODUCT_PACKAGES += \
