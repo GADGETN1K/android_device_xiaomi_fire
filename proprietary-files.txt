@@ -1353,13 +1353,13 @@ vendor/lib64/vendor.mediatek.hardware.mtkradioex.sim-V1-ndk.so
 # vendor/etc/init/android.hardware.sensors-service-multihal.rc
 # vendor/etc/vintf/manifest/android.hardware.sensors-multihal.xml
 vendor/lib/hw/sensors.dynamic_sensor_hal.so
-vendor/lib/libcamera2ndk_vendor.so
+#y vendor/lib/libcamera2ndk_vendor.so
 vendor/lib/libhidparser.so
 vendor/lib/sensors.camera.light.so
 vendor/lib/sensors.touch.detect.so
 vendor/lib64/hw/sensors.dynamic_sensor_hal.so
 vendor/lib64/hw/sensors.mt6768.so
-vendor/lib64/libcamera2ndk_vendor.so
+#y vendor/lib64/libcamera2ndk_vendor.so
 vendor/lib64/libhidparser.so
 vendor/lib64/sensors.camera.light.so
 vendor/lib64/sensors.touch.detect.so
