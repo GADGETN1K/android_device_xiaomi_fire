@@ -1572,7 +1572,7 @@ vendor/bin/sfr
 vendor/bin/sfrproc
 # vendor/bin/stp_dump3
 vendor/bin/tcpdump-vendor
-vendor/bin/test-nusensors
+#y vendor/bin/test-nusensors
 vendor/bin/test-sarsensor
 # vendor/bin/thermal
 # vendor/bin/thermal_manager
