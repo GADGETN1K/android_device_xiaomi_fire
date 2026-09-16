@@ -41,6 +41,9 @@ lib_fixups: lib_fixups_user_type = {
 }
 
 blob_fixups: blob_fixups_user_type = {
+    ('vendor/lib/libcamera2ndk_vendor.so', 'vendor/lib64/libcamera2ndk_vendor.so'): blob_fixup()
+        .replace_needed('android.frameworks.cameraservice.device-V3-ndk.so', 'android.frameworks.cameraservice.device-V2-ndk.so'),
+
     (
         'vendor/lib/egl/libGLES_mali.so',
         'vendor/lib64/egl/libGLES_mali.so',
