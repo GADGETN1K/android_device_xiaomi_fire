@@ -101,8 +101,9 @@ prebuilt_etc {
 }
 
 prebuilt_etc {
-    name: "init.mt6768.usb.rc",
+    name: "fire.init.mt6768.usb.rc",
     src: "etc/init.mt6768.usb.rc",
+    filename: "init.mt6768.usb.rc",
     sub_dir: "init/hw",
     vendor: true,
 }

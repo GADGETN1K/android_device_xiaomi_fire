@@ -1,6 +1,25 @@
 # Unpinned blobs from missi-user 15 AP3A.240905.015.A2 OS2.0.209.0.VMXMIXM release-keys
 
 # Audio
+vendor/etc/permissions/android.hardware.telephony.ims.prebuilt.xml:vendor/etc/permissions/android.hardware.telephony.ims.xml
+vendor/etc/permissions/com.xiaomi.sensor.xml
+vendor/lib64/hw/android.hardware.sensors@2.X-subhal-mediatek.so
+vendor/lib64/hw/android.hardware.camera.provider@2.6-impl-mediatek.so
+vendor/lib/hw/android.hardware.graphics.allocator-V2-mediatek.so
+vendor/lib64/hw/android.hardware.graphics.allocator-V2-mediatek.so
+vendor/lib/android.hardware.audio.core-impl-mediatek.so
+vendor/lib64/android.hardware.audio.core-impl-mediatek.so
+vendor/lib/android.hardware.bluetooth.audio-impl-mediatek.so
+vendor/lib64/android.hardware.bluetooth.audio-impl-mediatek.so
+vendor/lib/hw/android.hardware.audio.effect.aidl-impl-mediatek.so
+vendor/lib64/hw/android.hardware.audio.effect.aidl-impl-mediatek.so
+vendor/lib64/hw/android.hardware.gnss-impl-mediatek.so
+vendor/lib64/android.hardware.power-service-mediatek.so
+vendor/lib64/libpixelflinger.so
+vendor/lib/libpixelflinger.so
+vendor/lib64/libc++_shared.so
+system/lib/av-audio-types-aidl-V1-ndk.so
+system/lib64/av-audio-types-aidl-V1-ndk.so
 system_ext/bin/hw/android.hardware.audio.parameter_parser.service
 system_ext/etc/init/android.hardware.audio.parameter_parser.service.rc
 vendor/bin/hw/android.hardware.audio.service-aidl.mediatek
@@ -16,7 +35,8 @@ vendor/lib/hw/vendor.mediatek.hardware.audio-impl.so
 vendor/lib/libaedv.so
 #y vendor/lib/libalsautils.so
 #y vendor/lib/libalsautilsv2.so
-vendor/lib/libaudio_aidl_conversion_common_ndk.so
+#y vendor/lib/libaudio_aidl_conversion_common_ndk.so
+vendor/lib/libaudio_aidl_conversion_common_ndk.so:vendor/lib/libaudio_aidl_conversion_common_ndk_prebuilt.so;DISABLE_DEPS;FIX_SONAME
 #y vendor/lib/libaudioaidlcommon.so
 vendor/lib/libaudiotoolkit_vendor.so
 vendor/lib/libbluetooth_audio_session_aidl_mtk.so
@@ -37,7 +57,8 @@ vendor/lib64/hw/vendor.mediatek.hardware.audio-impl.so
 vendor/lib64/libaedv.so
 #y vendor/lib64/libalsautils.so
 #y vendor/lib64/libalsautilsv2.so
-vendor/lib64/libaudio_aidl_conversion_common_ndk.so
+#y vendor/lib64/libaudio_aidl_conversion_common_ndk.so
+vendor/lib64/libaudio_aidl_conversion_common_ndk.so:vendor/lib64/libaudio_aidl_conversion_common_ndk_prebuilt.so;DISABLE_DEPS;FIX_SONAME
 #y vendor/lib64/libaudioaidlcommon.so
 vendor/lib64/libaudiotoolkit_vendor.so
 vendor/lib64/libbluetooth_audio_session_aidl_mtk.so
@@ -290,8 +311,8 @@ vendor/lib/hw/vendor.mediatek.hardware.bluetooth.audio@2.2-impl.so
 vendor/lib/libbluetooth_audio_session_mediatek.so
 vendor/lib/vendor.mediatek.hardware.audio@6.1.so
 vendor/lib/vendor.mediatek.hardware.bluetooth.audio-V1-ndk.so
-vendor/lib/vendor.mediatek.hardware.bluetooth.audio@2.1.so
-vendor/lib/vendor.mediatek.hardware.bluetooth.audio@2.2.so
+#y vendor/lib/vendor.mediatek.hardware.bluetooth.audio@2.1.so
+#y vendor/lib/vendor.mediatek.hardware.bluetooth.audio@2.2.so
 vendor/lib64/hw/android.hardware.bluetooth.audio@2.0-impl.so
 vendor/lib64/hw/android.hardware.bluetooth.audio@2.1-impl.so
 #y vendor/lib64/hw/audio.bluetooth.default.so
@@ -303,8 +324,8 @@ vendor/lib64/hw/vendor.mediatek.hardware.bluetooth.audio@2.2-impl.so
 vendor/lib64/libbluetooth_audio_session_mediatek.so
 vendor/lib64/vendor.mediatek.hardware.audio@6.1.so
 vendor/lib64/vendor.mediatek.hardware.bluetooth.audio-V1-ndk.so
-vendor/lib64/vendor.mediatek.hardware.bluetooth.audio@2.1.so
-vendor/lib64/vendor.mediatek.hardware.bluetooth.audio@2.2.so
+#y vendor/lib64/vendor.mediatek.hardware.bluetooth.audio@2.1.so
+#y vendor/lib64/vendor.mediatek.hardware.bluetooth.audio@2.2.so
 
 # Boot
 # vendor/bin/hw/android.hardware.boot-service.mtk
@@ -885,7 +906,7 @@ vendor/lib64/hw/fingerprint.goodix.so
 vendor/lib64/libgf_ca.so
 vendor/lib64/libgf_hal.so
 vendor/lib64/libgoodixhwfingerprint.so
-#y vendor/lib64/libmifpext.so
+vendor/lib64/libmifpext.so
 vendor/lib64/libvendor.goodix.hardware.biometrics.fingerprint@2.1.so
 #y vendor/lib64/vendor.xiaomi.hardware.fingerprintextension@1.0.so
 
@@ -1496,7 +1517,7 @@ vendor/bin/SMBlemishAnalyzer_new
 vendor/bin/cam_ae
 vendor/bin/cameratest
 # vendor/bin/charge_logger
-vendor/bin/chipinfo
+#y vendor/bin/chipinfo
 # vendor/bin/dconfig
 vendor/bin/defect
 # vendor/bin/dexecutor
@@ -2062,7 +2083,7 @@ vendor/etc/init/arm.mali.platform-mediatek.rc
 # vendor/etc/init/audiocmdservice_atci.rc
 vendor/etc/init/bootperf.rc
 vendor/etc/init/boringssl_self_test.rc
-vendor/etc/init/chipinfo_init.rc
+#y vendor/etc/init/chipinfo_init.rc
 vendor/etc/init/display.rc
 # vendor/etc/init/dmc_core.rc
 vendor/etc/init/factorybsp_service.rc
@@ -2642,8 +2663,8 @@ vendor/lib/vendor.mediatek.hardware.mdmonitor-V1-ndk.so
 vendor/lib/vendor.mediatek.hardware.mdmonitor@1.0.so
 vendor/lib/vendor.mediatek.hardware.netdagent-V1-ndk.so
 vendor/lib/vendor.mediatek.hardware.netdagent@1.0.so
-vendor/lib/vendor.nxp.nxpese@1.0.so
-vendor/lib/vendor.nxp.nxpnfc@1.0.so
+#y vendor/lib/vendor.nxp.nxpese@1.0.so
+#y vendor/lib/vendor.nxp.nxpnfc@1.0.so
 vendor/lib/vendor.xiaomi.hardware.vsimapp@1.0.so
 vendor/lib/vpp_hdrmeta_handler_plugin.so
 vendor/lib/xiaomi.system.hypsys.common-V1-ndk.so
@@ -2805,7 +2826,7 @@ vendor/lib64/libsimmelock.so
 vendor/lib64/libspeech_enh_lib.so
 vendor/lib64/libspeechparser_vendor.so
 vendor/lib64/libswtcc.so
-vendor/lib64/libtflite.so
+#y vendor/lib64/libtflite.so
 vendor/lib64/libthermalalgo.so
 vendor/lib64/libthha.so
 vendor/lib64/libtranslator_mapi_v3.0.so
@@ -2857,9 +2878,9 @@ vendor/lib64/vendor.mediatek.hardware.mmlpq-V3-ndk.so
 vendor/lib64/vendor.mediatek.hardware.netdagent-V1-ndk.so
 vendor/lib64/vendor.mediatek.hardware.netdagent@1.0.so
 vendor/lib64/vendor.mediatek.hardware.nps.nos.fastswitch-V1-ndk.so
-vendor/lib64/vendor.nxp.nxpese@1.0.so
-vendor/lib64/vendor.nxp.nxpnfc@1.0.so
-vendor/lib64/vendor.nxp.nxpnfc_aidl-V1-ndk.so
+#y vendor/lib64/vendor.nxp.nxpese@1.0.so
+#y vendor/lib64/vendor.nxp.nxpnfc@1.0.so
+#y vendor/lib64/vendor.nxp.nxpnfc_aidl-V1-ndk.so
 vendor/lib64/vendor.xiaomi.hardware.mimd@1.0.so
 vendor/lib64/vendor.xiaomi.hardware.misys.common-V3-ndk.so
 vendor/lib64/vendor.xiaomi.hardware.misys.core-V1-ndk.so

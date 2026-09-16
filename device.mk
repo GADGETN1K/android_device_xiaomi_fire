@@ -89,7 +89,7 @@ PRODUCT_PACKAGES += \
     init.connectivity.rc \
     init.modem.rc \
     init.mt6768.rc \
-    init.mt6768.usb.rc \
+    fire.init.mt6768.usb.rc \
     init.mtkgki.rc \
     init.project.rc \
     init.sensor_1_0.rc \
@@ -133,11 +133,6 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
-
-# DTB
-PRODUCT_COPY_FILES += \
-    $(KERNEL_PATH)/dtb.img:dtb.img \
-    $(KERNEL_PATH)/kernel:kernel
 
 # Fingerprint
 PRODUCT_PACKAGES += \
