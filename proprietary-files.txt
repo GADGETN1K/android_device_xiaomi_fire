@@ -1000,7 +1000,7 @@ vendor/lib64/vendor.xiaomi.hardware.micharge-V2-ndk.so
 # IR
 # vendor/bin/hw/android.hardware.ir-service.example
 # vendor/etc/init/android.hardware.ir-service.example.rc
-vendor/etc/vintf/manifest/android.hardware.ir-service.example.xml
+# vendor/etc/vintf/manifest/android.hardware.ir-service.example.xml
 vendor/lib/hw/consumerir.common.so
 vendor/lib64/hw/consumerir.common.so
 
@@ -1441,7 +1441,7 @@ vendor/etc/init/wlan_assistant.rc
 #y vendor/etc/vintf/manifest/android.hardware.wifi.hostapd.xml
 #y vendor/etc/vintf/manifest/android.hardware.wifi.supplicant.xml
 vendor/lib64/libkeystore-engine-wifi-hidl.so
-vendor/lib64/libwifi-hal.so
+vendor/lib64/libwifi-hal.so:vendor/lib64/libwifi-hal-mtk.so
 vendor/lib64/vendor.xiaomi.hardware.wifi.supplicant-V1-ndk.so
 
 # Wi-Fi configs
@@ -2397,7 +2397,7 @@ vendor/etc/stability/std.mp3
 # vendor/etc/vintf/manifest/CommandService.xml
 # vendor/etc/vintf/manifest/FastSwitch.xml
 vendor/etc/vintf/manifest/bluetooth_audio.xml
-vendor/etc/vintf/manifest/gnss-default.xml
+vendor/etc/vintf/manifest/gnss-default.xml:vendor/etc/vintf/manifest/gnss-aosp.xml
 vendor/etc/vintf/manifest/gnss-mtk.xml
 # vendor/etc/vintf/manifest/lights-mtk-default.xml
 vendor/etc/vintf/manifest/manifest_allocator.xml
