@@ -27,7 +27,6 @@ allow hal_sensors_default gpu_device:chr_file rw_file_perms;
 get_prop(hal_sensors_default, vendor_camera_prop)
 
 # AIDL CameraService communication for virtual ALS
-hal_client_domain(hal_sensors_default, hal_camera)
 allow hal_sensors_default fwk_camera_service:service_manager find;
 allow hal_sensors_default cameraserver:binder { call transfer };
 allow cameraserver hal_sensors_default:binder { call transfer };
