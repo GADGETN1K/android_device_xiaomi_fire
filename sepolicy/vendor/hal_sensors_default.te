@@ -19,5 +19,8 @@ allow hal_sensors_default vendor_displayfeature_sysfs:file rw_file_perms;
 allow hal_sensors_default vendor_displayfeature_sysfs:file rw_file_perms;
 allow hal_sensors_default vendor_displayfeature_sysfs:lnk_file r_file_perms;
 
+# Allow sensors HAL to find camera service for virtual proximity / light sensing
+allow hal_sensors_default fwk_camera_service:service_manager find;
+
 binder_use(hal_sensors_default)
 binder_call(hal_sensors_default, system_server)
