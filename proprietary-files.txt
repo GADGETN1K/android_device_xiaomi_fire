@@ -2064,7 +2064,6 @@ vendor/lib64/android.hardware.power-service-mediatek.so|37bdf43a1a7abb37fe81a780
 vendor/etc/init.insmod.mt6768.cfg|68ec05d8a374b17130909562a042ce6d8a438277
 
 # Sensors HAL expects its sub-HAL configuration from ODM.
-vendor/etc/sensors/hals.conf:odm/etc/sensors/hals.conf|5b9f70bce7de1735609755ebb4cd1292ec21dc48
 vendor/lib/sensors.camera.light.so|8de6a81c7939475feccb8da76f8c1049aa7911de
 vendor/lib64/sensors.camera.light.so|479a483bb165097a0cbfff547837906c5e429206
 vendor/lib64/hw/sensors.mt6768.so|8a4a80b69455d2f50af653bfeda7f5d132768cc5
